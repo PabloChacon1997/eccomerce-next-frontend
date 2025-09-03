@@ -1,9 +1,17 @@
 "use client"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+
 import styles from "./JoinLayout.module.scss"
 import { Icon } from "semantic-ui-react"
+import { useAuth } from "@/hooks"
 
 export function JoinLayout({ children }) {
+  const { user } = useAuth();
+  const router = useRouter()
+
+  if(user) router.push("/");
+
   return (
     <div className={styles.container}>
       <div className={styles.topBar}>

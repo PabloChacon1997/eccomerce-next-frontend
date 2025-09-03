@@ -1,14 +1,17 @@
 "use client"
 import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
 import { Form } from "semantic-ui-react";
+
 import { initialValues, validationSchema } from "./LoginForm.form";
 import { Auth } from "@/app/api";
-import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks";
 
 const authCtrl = new Auth();
 
 export function LoginForm() {
   const router = useRouter();
+  const { login } = useAuth();
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
@@ -16,7 +19,7 @@ export function LoginForm() {
     onSubmit: async (formValue) => {
       try {
         const response = await authCtrl.login(formValue);
-        console.log(response);
+        login(response.jwt);
         // router.push("/");
       } catch (error) {
         console.log(error);
