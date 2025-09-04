@@ -1,6 +1,10 @@
 "use client"
+import { Token, User } from "@/app/api";
 import { createContext, useEffect, useState } from "react";
 
+
+const tokenCtrl = new Token();
+const userCtrl = new User();
 
 export const AuthContext = createContext();
 
@@ -18,9 +22,9 @@ export function AuthProvider(props) {
 
   const login = async (token) => {
     try {
-      setUser({
-        email: 'pabloandres@test.com'
-      });
+      tokenCtrl.setToken(token);
+      const response = await userCtrl.getMe();
+      setUser(response);
       setToken(token);
       setLoading(false);
     } catch (error) {
