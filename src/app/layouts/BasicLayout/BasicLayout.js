@@ -1,3 +1,4 @@
+"use client"
 import { Container } from "semantic-ui-react";
 import classNames from "classnames";
 
