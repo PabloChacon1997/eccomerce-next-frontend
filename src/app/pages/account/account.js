@@ -5,6 +5,7 @@ import styles from './account.module.scss'
 import { useAuth } from "@/hooks";
 import { useRouter } from "next/navigation";
 import { Settings, Info } from "@/app/components/Account";
+import { Separator } from "@/app/components/Shared";
 
 export default function AccountPage() {
   const { user, logout } = useAuth();
@@ -46,6 +47,10 @@ export default function AccountPage() {
       render: () => (
         <Tab.Pane attached={false}>
           <Settings.ChangeNameForm />
+          <div className={styles.containerForms}>
+            <Settings.ChangeEmailForm />
+          </div>
+          <Separator height={80} />
         </Tab.Pane>
       )
     },
