@@ -49,6 +49,7 @@ export default function AccountPage() {
           <Settings.ChangeNameForm />
           <div className={styles.containerForms}>
             <Settings.ChangeEmailForm />
+            <Settings.ChangePasswordForm />
           </div>
           <Separator height={80} />
         </Tab.Pane>
@@ -56,7 +57,7 @@ export default function AccountPage() {
     },
     {
       menuItem: {
-        icon: "logout",
+        icon: "log out",
         content: "",
         onClick: logout
       }
