@@ -12,7 +12,7 @@ export function Account() {
   const router = useRouter();
 
   const goToLogin = () => router.push("/pages/join/sign-in");
-  const goToAccount = () => router.push("/account");
+  const goToAccount = () => router.push("/pages/account");
 
   const goToCart = () => {
     if (!user) goToLogin();

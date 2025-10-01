@@ -4,7 +4,7 @@ import { BasicLayout } from "@/app/layouts";
 import styles from './account.module.scss'
 import { useAuth } from "@/hooks";
 import { useRouter } from "next/navigation";
-import { Settings, Info } from "@/app/components/Account";
+import { Settings, Info, Address } from "@/app/components/Account";
 import { Separator } from "@/app/components/Shared";
 
 export default function AccountPage() {
@@ -35,7 +35,8 @@ export default function AccountPage() {
       menuItem: "Direcciones",
       render: () => (
         <Tab.Pane attached={false}>
-          <p>Mis direcciones...</p>
+          <Address.AddAddress />
+          <Separator height={80} />
         </Tab.Pane>
       )
     },
