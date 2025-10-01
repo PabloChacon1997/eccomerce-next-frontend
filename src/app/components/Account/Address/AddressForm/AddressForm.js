@@ -1,9 +1,14 @@
 import { useFormik } from "formik";
 import { Form } from "semantic-ui-react";
 import { initialValues, validationSchema } from "./AddressForm.form";
+import { Address } from "@/app/api";
+import { useAuth } from "@/hooks";
+
+const addressCtrl = new Address();
 
 export function AddressForm(props) {
   const { onClose } = props;
+  const { user } = useAuth();
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
@@ -11,6 +16,8 @@ export function AddressForm(props) {
     onSubmit: async (formValue) => {
       try {
         console.log(formValue)
+        await addressCtrl.create(formValue, user.id);
+        formik.handleReset();
         onClose()
       } catch (error) {
         console.error(error);
