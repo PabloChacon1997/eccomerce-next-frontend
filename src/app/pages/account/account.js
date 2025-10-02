@@ -1,19 +1,24 @@
 "use client"
+import { useState } from "react";
 import { Tab } from "semantic-ui-react";
+import { useRouter } from "next/navigation";
+
 import { BasicLayout } from "@/app/layouts";
 import styles from './account.module.scss'
 import { useAuth } from "@/hooks";
-import { useRouter } from "next/navigation";
 import { Settings, Info, Address } from "@/app/components/Account";
 import { Separator } from "@/app/components/Shared";
 
 export default function AccountPage() {
   const { user, logout } = useAuth();
   const router = useRouter();
+  const [reload, setReload] = useState(false)
   if (!user) {
     router.push("/");
     return null;
   }
+
+  const onReload = () => setReload(prevState => !prevState);
   const panes = [
     {
       menuItem: "Mis pedidos",
@@ -35,8 +40,8 @@ export default function AccountPage() {
       menuItem: "Direcciones",
       render: () => (
         <Tab.Pane attached={false}>
-          <Address.AddAddress />
-          <Address.ListAddresses />
+          <Address.AddAddress onReload={onReload}/>
+          <Address.ListAddresses reload={reload} onReload={onReload}/>
           <Separator height={80} />
         </Tab.Pane>
       )

@@ -7,17 +7,22 @@ import { useAuth } from "@/hooks";
 const addressCtrl = new Address();
 
 export function AddressForm(props) {
-  const { onClose } = props;
+  const { onClose , onReload, addressId, address} = props;
   const { user } = useAuth();
+  console.log(address)
   const formik = useFormik({
-    initialValues: initialValues(),
+    initialValues: initialValues(address),
     validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
-        console.log(formValue)
-        await addressCtrl.create(formValue, user.id);
+        if (addressId) {
+          await addressCtrl.update(formValue, addressId)
+        } else {
+          await addressCtrl.create(formValue, user.id);
+        }
         formik.handleReset();
+        onReload()
         onClose()
       } catch (error) {
         console.error(error);
