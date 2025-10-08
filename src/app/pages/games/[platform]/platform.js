@@ -1,6 +1,6 @@
 "use client"
 import { Game, Platform } from "@/app/api";
-import { GridGames, Separator } from "@/app/components/Shared";
+import { GridGames, Separator, NoResult, Pagination } from "@/app/components/Shared";
 import { BasicLayout } from "@/app/layouts";
 import { size } from "lodash";
 import { useParams } from "next/navigation";
@@ -23,7 +23,7 @@ export default  function PlatformPage({ searchParams }) {
         const reponseGames = await gameCtrl.getGamesByPlatform(params?.platform, page);
         setPlatform(responsePlatform);
         setGames(reponseGames.data);
-        setPagination(reponseGames.meta);
+        setPagination(reponseGames.meta.pagination);
       } catch (error) {
         console.error(error);
       }
@@ -31,7 +31,7 @@ export default  function PlatformPage({ searchParams }) {
   }, []);
 
   const hasProducts = size(games) > 0;
-
+  
   return (
     <>
       <BasicLayout relative>
@@ -41,9 +41,11 @@ export default  function PlatformPage({ searchParams }) {
           {hasProducts ? (
             <>
               <GridGames games={games} />
+              <Separator height={30} />
+              <Pagination currentPage={ pagination?.page ?? 1 } pageSize={pagination?.pageSize ?? 0} totalPages={pagination?.pageCount ?? 0}/>
             </>
           ):(
-            <p>Sin resultados</p>
+            <NoResult text={`La categoría ${platform?.title ?? ''} aun no tiene productos`}/>
           )}
           <Separator height={100} />
         </Container>

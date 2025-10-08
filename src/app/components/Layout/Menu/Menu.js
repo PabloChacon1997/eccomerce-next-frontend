@@ -5,17 +5,19 @@ import { map } from 'lodash';
 import Link from 'next/link';
 import { Icon, Image, Input } from 'semantic-ui-react';
 import classNames from 'classnames';
+import { useRouter } from 'next/navigation';
 
 const platformCtrl = new Platform();
 
 export function Menu(props) {
   const { isOpenSearch } = props;
   const [platforms, setPlatforms] = useState(null);
-  const [showSearhc, setSetshowSearhc] = useState(false);
+  const [showSearhc, setSetshowSearhc] = useState(isOpenSearch);
+
+  const router = useRouter();
 
   const openCloseSearch = () => setSetshowSearhc((prevState) => !prevState);
 
-  console.log(platforms)
   useEffect(() => {
       (async () => {
         try {
@@ -26,6 +28,10 @@ export function Menu(props) {
         }
       })();
   }, []);
+  
+  const onSearch = (text) => {
+    router.replace(`/pages/search?s=${text}`);
+  }
   
   return (
     <div className={styles.platforms}>
@@ -42,7 +48,7 @@ export function Menu(props) {
       <div className={classNames(styles.inputContainer, {
         [styles.active]: showSearhc
       })}>
-        <Input id="search-games" placeholder='Buscador' className={styles.input} focus={true}/>
+        <Input id="search-games" placeholder='Buscador' className={styles.input} focus={true} onChange={(_, data) => onSearch(data.value)}/>
         <Icon name='close' className={styles.closeInput} onClick={openCloseSearch} />
       </div>
     </div>
