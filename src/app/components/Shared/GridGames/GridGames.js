@@ -11,7 +11,7 @@ export  function GridGames(props) {
   return (
     <div className={styles.gridGames}>
       {map(games,  (game) => (
-        <Link key={game.id} href={`/${game.slug}`} className={styles.game}>
+        <Link key={game.id} href={`/pages/${game.slug}`} className={styles.game}>
           <div>
             <img src={game.cover.url}/>
             {game.discount > 0 && (
