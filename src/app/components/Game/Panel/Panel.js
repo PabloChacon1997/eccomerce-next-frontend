@@ -1,6 +1,7 @@
 import { Button, Container, Icon, Image } from 'semantic-ui-react'
 import styles from './Panel.module.scss'
 import { fn } from '@/utils';
+import { WishlistIcon } from '@/app/components/Shared';
 
 export function Panel(props) {
   const{ gameId, game } = props;
@@ -40,6 +41,7 @@ export function Panel(props) {
           <Button primary fluid>
             Comprar ahora
           </Button>
+          <WishlistIcon gameId={gameId} className={styles.heart}/>
         </div>
       </div>
     </Container>

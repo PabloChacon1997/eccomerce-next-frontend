@@ -30,6 +30,10 @@ export default function GamePage() {
         <Game.HeaderWallpaper image={videoGame?.wallpaper?.url ?? ''}/>
         <Game.Panel gameId={videoGame?.id ?? 0} game={videoGame}/>
         <Separator height={50} />
+        <Game.Info game={videoGame}/>
+        <Separator height={30} />
+        <Game.Media video={videoGame?.video ?? ''} screenshots={videoGame?.screenshots ?? []}/>
+        <Separator height={50} />
       </BasicLayout>
     </>
   )
