@@ -8,7 +8,7 @@ import { useAuth } from '@/hooks';
 const whislistsCtrl = new WhisList();
 
 export function WishlistIcon(props) {
-  const { gameId, className } = props;
+  const { gameId, className, removeCallback } = props;
   const [hasWhislist, setHasWhislist] = useState(null);
   const { user } = useAuth()
   
@@ -34,6 +34,10 @@ export function WishlistIcon(props) {
     try {
       await whislistsCtrl.delete(hasWhislist.data[0].documentId);
       setHasWhislist(false);
+
+      if(removeCallback) {
+        removeCallback();
+      }
     } catch (error) {
       console.error(error)
     }

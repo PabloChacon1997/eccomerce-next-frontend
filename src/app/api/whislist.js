@@ -49,9 +49,9 @@ export class WhisList {
         method: "DELETE",
       }
       const response = await authFetch(url, params);
-      const result = await response.json();
-      if(response.status !== 204) throw result;
-      return result;
+      if(response.status === 204) return;
+      const result = await response?.json();
+      throw result;
     } catch (error) {
       throw error;
     }
