@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { BasicLayout } from "@/app/layouts";
 import styles from './account.module.scss'
 import { useAuth } from "@/hooks";
-import { Settings, Info, Address } from "@/app/components/Account";
+import { Settings, Info, Address, Wishlist } from "@/app/components/Account";
 import { Separator } from "@/app/components/Shared";
 
 export default function AccountPage() {
@@ -32,7 +32,8 @@ export default function AccountPage() {
       menuItem: "Lista de deseos",
       render: () => (
         <Tab.Pane attached={false}>
-          <p>Mis lista de deseos...</p>
+          <Wishlist />
+          <Separator height={80} />
         </Tab.Pane>
       )
     },
