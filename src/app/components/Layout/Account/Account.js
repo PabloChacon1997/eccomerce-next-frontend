@@ -1,22 +1,20 @@
-import { useAuth } from '@/hooks'
+import { useAuth, useCart } from '@/hooks'
 import styles from './Account.module.scss'
 import { useRouter } from 'next/navigation';
 import { Button, Icon, Label } from 'semantic-ui-react';
 import classNames from 'classnames';
 
-// TODO:...
-const total = 5;
 
 export function Account() {
   const { user } = useAuth();
   const router = useRouter();
-
+  const { total } = useCart();
   const goToLogin = () => router.push("/pages/join/sign-in");
   const goToAccount = () => router.push("/pages/account");
 
   const goToCart = () => {
     if (!user) goToLogin();
-    else router.push("/cart");
+    else router.push("/pages/cart");
   }
 
   return (

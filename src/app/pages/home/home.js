@@ -13,7 +13,6 @@ const platformsId = {
 }
 
 export default function HomePage() {
-  console.log(useCart());
   return (
     <>
       <BasicLayout>

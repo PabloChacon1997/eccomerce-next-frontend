@@ -5,3 +5,4 @@ export * from "./platform";
 export * from "./address";
 export * from "./game";
 export * from "./whislist";
+export * from "./cart";
