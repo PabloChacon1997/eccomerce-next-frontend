@@ -14,7 +14,7 @@ export function Panel(props) {
 
   const addCartWrapper = () => {
     setLoading(true)
-    addCart(gameId);
+    addCart(game.documentId);
 
     setTimeout(() => {
       setLoading(false);
