@@ -13,7 +13,7 @@ export class Cart {
       games[objectIndex].quantity = game.quantity +1;
     }
     
-    localStorage.setItem(ENV.CART, JSON.stringify(games));;
+    localStorage.setItem(ENV.CART, JSON.stringify(games));
   }
 
   getAll() {
@@ -33,5 +33,20 @@ export class Cart {
     })
 
     return count;
+  }
+
+  changeQuantity(gameId, quantity) {
+    const games = this.getAll();
+    const objectIndex = games.findIndex((game) => game.id === gameId);
+
+    games[objectIndex].quantity = quantity;
+    localStorage.setItem(ENV.CART, JSON.stringify(games));
+  }
+
+  delete(gameId) {
+    const games = this.getAll();
+    const updateGames = games.filter((game) => game.id !== gameId);
+    
+    localStorage.setItem(ENV.CART, JSON.stringify(updateGames));
   }
 }
