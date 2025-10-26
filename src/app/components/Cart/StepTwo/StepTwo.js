@@ -7,6 +7,7 @@ import { Addresses } from './Addresses';
 import styles from './StepTwo.module.scss'
 import { ENV } from '@/utils';
 import { Payment } from './Payment';
+import { Resume } from './Resume';
 
 const stripeInit = loadStripe(ENV.STRIPE_TOKEN);
 
@@ -24,7 +25,7 @@ export function StepTwo(props) {
           {addressSelected && <Payment />}
         </div>
         <div className={styles.right}>
-          <p>RESUME</p>
+          <Resume games={games} addressSelected={addressSelected}/>
         </div>
       </div>
     </Elements>
