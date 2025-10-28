@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { BasicLayout } from "@/app/layouts";
 import styles from './account.module.scss'
 import { useAuth } from "@/hooks";
-import { Settings, Info, Address, Wishlist } from "@/app/components/Account";
+import { Settings, Info, Address, Wishlist, Orders } from "@/app/components/Account";
 import { Separator } from "@/app/components/Shared";
 
 export default function AccountPage() {
@@ -24,7 +24,8 @@ export default function AccountPage() {
       menuItem: "Mis pedidos",
       render: () => (
         <Tab.Pane attached={false}>
-          <p>Mis pedidos...</p>
+          <Separator height={80} />
+          <Orders />
         </Tab.Pane>
       )
     },

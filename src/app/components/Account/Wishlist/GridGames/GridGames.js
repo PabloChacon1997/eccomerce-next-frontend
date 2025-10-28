@@ -13,21 +13,21 @@ export function GridGames(props) {
         console.log(item)
         return (
           <div key={item.id} className={styles.game}>
-            <Link href={`/pages/${item.game.slug}`}>
+            <Link href={`/pages/${item?.game?.slug ?? ''}`}>
               <div>
-                <img src={item.game.cover.url} />
-                {item.game.discount > 0 && (
+                <img src={item?.game?.cover?.url ?? ''} />
+                {item?.game && item.game.discount > 0 && (
                   <Label.Discount className={styles.discount}>
-                    {`-${item.game.discount}`}
+                    {`-${item?.game?.discount ?? 0}`}
                   </Label.Discount>
                 )}
               </div>
               <div>
-                <span>{item.game.title}</span>
-                <span className={styles.price}>$ {fn.calcDiscounterPrice(item.game.price, item.game.discount)}</span>
+                <span>{item?.game?.title ?? ''}</span>
+                <span className={styles.price}>$ {fn.calcDiscounterPrice(item?.game?.price ?? 0, item?.game?.discount ?? 0)}</span>
               </div>
             </Link>
-            <WishlistIcon gameId={item.game.id} className={styles.wishlistIcon} removeCallback={onReload}/>
+            <WishlistIcon gameId={item?.game?.id ?? 0} className={styles.wishlistIcon} removeCallback={onReload}/>
           </div>
         )
       })}
