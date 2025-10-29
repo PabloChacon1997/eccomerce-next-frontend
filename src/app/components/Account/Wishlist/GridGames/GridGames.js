@@ -6,11 +6,9 @@ import { fn } from '@/utils';
 
 export function GridGames(props) {
   const { wishlist, onReload } = props;
-  // console.log(wishlist);
   return (
     <div className={styles.gridGames}>
       {map(wishlist,(item) => {
-        console.log(item)
         return (
           <div key={item.id} className={styles.game}>
             <Link href={`/pages/${item?.game?.slug ?? ''}`}>

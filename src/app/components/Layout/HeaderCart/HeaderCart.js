@@ -10,7 +10,6 @@ import classNames from 'classnames';
 export function HeaderCart() {
   const params = useSearchParams();
   const currentStep = params.get('step') ?? 1;
-  console.log({currentStep});
   const steps = [
     { number: 1, title: "Cesta" },
     { number: 2, title: "Pago" },

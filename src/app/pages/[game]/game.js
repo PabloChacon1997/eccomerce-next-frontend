@@ -18,7 +18,6 @@ export default function GamePage() {
       try {
         const reponse = await gameCtrl.getBySlug(game);
         setVideoGame(reponse);
-        console.log(reponse);
       } catch (error) {
         console.error(error);
       }

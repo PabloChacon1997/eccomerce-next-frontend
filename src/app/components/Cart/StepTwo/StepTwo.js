@@ -15,7 +15,6 @@ const stripeInit = loadStripe(ENV.STRIPE_TOKEN);
 export function StepTwo(props) {
   const { games } = props;
   const [addressSelected, setAddressSelected] = useState(null);
-  console.log(addressSelected);
   return (
     <Elements stripe={stripeInit}>
       <div className={styles.stepTwo}>

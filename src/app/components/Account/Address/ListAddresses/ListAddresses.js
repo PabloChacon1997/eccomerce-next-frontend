@@ -15,7 +15,6 @@ export function ListAddresses(props) {
   const [addresses, setAddresses] = useState(null);
   const { user } = useAuth();
 
-  console.log(addresses);
 
   useEffect(() => {
     (async () => {

@@ -28,7 +28,6 @@ export function WishlistIcon(props) {
   const addWhisList = async () => {
     const response = await whislistsCtrl.add(user.id,gameId-1);
     setHasWhislist(response);
-    console.log(response);
   }
   const deleteWhisList = async () => {
     try {

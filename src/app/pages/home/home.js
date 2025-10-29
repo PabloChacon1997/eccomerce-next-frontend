@@ -3,7 +3,6 @@ import { Container } from "semantic-ui-react";
 
 import { Separator, BarTrust, BannerAd } from "@/app/components/Shared";
 import { BasicLayout } from "@/app/layouts/BasicLayout";
-import { useCart } from "@/hooks";
 
 const platformsId = {
   playstation: 'playstation',

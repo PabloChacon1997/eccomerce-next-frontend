@@ -9,7 +9,6 @@ const addressCtrl = new Address();
 export function AddressForm(props) {
   const { onClose , onReload, addressId, address} = props;
   const { user } = useAuth();
-  console.log(address)
   const formik = useFormik({
     initialValues: initialValues(address),
     validationSchema: validationSchema(),
